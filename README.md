@@ -1,112 +1,105 @@
 # React homework template
 
-Цей проект був створений за допомогою
-[Create React App](https://github.com/facebook/create-react-app). Для знайомства
-і налаштування додаткових можливостей
-[звернися до документації](https://facebook.github.io/create-react-app/docs/getting-started).
+Este proyecto fue creado con la ayuda de
+[Create React App](https://github.com/facebook/create-react-app).
+[Consulte la documentación](https://facebook.github.io/create-react-app/docs/getting-started)
+para familiarizarse con las funciones opcionales y configurarlas.
 
-## Створення репозиторію за шаблоном
+## Crear un repositorio desde una plantilla
 
-Використовуй цей репозиторій організації GoIT як шаблон для створення репозиторію
-свого проєкта. Для цього натисни на кнопку `«Use this template»` і вибери опцію
-`«Create a new repository»`, як показано на зображенні.
+Usa este repositorio de la organización GoIT como plantilla para crear el repositorio de tu proyecto. 
+Para hacer esto, haz clic en `«Use this template»` y selecciona la opción
+`«Create a new repository»`, tal como se muestra en la imagen.
 
 ![Creating repo from a template step 1](./assets/template-step-1.png)
 
-На наступному кроці відкриється сторінка створення нового репозиторію. Заповни поле
-його імені, переконайся що репозиторій публічний, після чого натисни кнопку
+Para el siguiente paso deberás abrir la página para crear un nuevo repositorio. 
+Ponle nombre, asegúrate de que el repositorio sea público y haz clic en el botón
 `«Create repository from template»`.
 
 ![Creating repo from a template step 2](./assets/template-step-2.png)
 
-Після того як репозиторій буде створено, необхідно перейти в налаштування
-створеного репозиторію на вкладку `Settings` > `Actions` > `General` як
-показано на зображенні.
+Ahora ya tienes un repositorio de proyecto personal, junto a una estructura de 
+archivos y carpetas del repositorio de plantillas. Luego trabaja con esto, así 
+como con cualquier otro repositorio personal, realiza una copia en tu computadora 
+y súbelo a GitHub.
 
-![Settings GitHub Actions permissions step 1](./assets/gh-actions-perm-1.png)
+## Prepararse para el trabajo
 
-Проскроливши сторінку до самого кінця, у секції `«Workflow permissions»` вибери
-опцію `«Read and write permissions»` і постав галочку в чекбоксі. Це
-необхідно для автоматизації процесу деплою проєкту.
+1. Asegúrate de que la versión LTS de Node.js está instalada en tu computador.
+   [Descárguela e instálela](https://nodejs.org/en/) de ser necesario.
+2. Instala las dependencias base del proyecto con el comando `npm install`.
+3. Inicia el modo de desarrollo ejecutando el comando `npm start`.
+4. En tu navegador, ve a la dirección
+   [http://localhost:3000](http://localhost:3000). Esta página se recargará
+   automáticamente después de guardar los cambios en los archivos del proyecto.
 
-![Settings GitHub Actions permissions step 2](./assets/gh-actions-perm-2.png)
+## Implementación
 
-Тепер у тебе є особистий репозиторій проекту, зі структурою файлів і папок
-репозиторію-шаблону. Далі працюй із ним як із будь-яким іншим особистим репозиторієм,
-клонуй його собі на комп'ютер, пиши код, роби комміти і відправляй їх на
-GitHub.
-
-## Підготовка до роботи
-
-1. Переконайся що на комп'ютері встановлено LTS-версія Node.js.
-   [Завантаж і встанови](https://nodejs.org/en/) її якщо необхідно.
-2. Встанови базові залежності проєкту командою `npm install`.
-3. Запусти режим розробки, виконавши команду `npm start`.
-4. Перейди в браузері за адресою [http://localhost:3000](http://localhost:3000).
-   Ця сторінка буде автоматично перезавантажуватися після збереження змін у файлах проєкту.
-
-## Деплой
-
-Продакшн версія проєкту буде автоматично проходити лінтинг, збиратися і
-деплоїтися на GitHub Pages, у гілку `gh-pages`, щоразу, коли оновлюється
-гілка `main`. Наприклад, після прямого пушу або прийнятого пул-реквесту. Для цього
-необхідно у файлі `package.json` відредагувати поле `homepage`, замінивши
-`your_username` і `your_repo_name` на свої, і відправити зміни на GitHub.
+La versión de producción del proyecto se verificará, compilará y desplegará
+automáticamente en GitHub Pages, en la rama `gh-pages`, cada vez que se
+actualice la rama `main`. Por ejemplo, después de un Push directo o de una
+Pool-request aceptada. Para ello, edita el campo `homepage` del archivo
+`package.json`, sustituyendo `your_username` y `your_repo_name` por los tuyos
+propios, y envía los cambios a GitHub.
 
 ```json
 "homepage": "https://your_username.github.io/your_repo_name/"
 ```
 
-Далі необхідно зайти в налаштування GitHub-репозиторію (`Settings` > `Pages`) і
-виставити роздачу продакшн-версії файлів із папки `/root` гілки `gh-pages`, якщо
-це не було зроблено автоматично.
+A continuación, ve a la configuración del repositorio de GitHub (`Settings` >
+`Pages`) y selecciona distribuir la versión de producción de los archivos desde
+la carpeta `/root` de la rama `gh-pages`, si no se ha hecho automáticamente.
 
 ![GitHub Pages settings](./assets/repo-settings.png)
 
-### Статус деплоя
+### Estado de la implantación
 
-Статус деплою крайнього коміту відображається іконкою біля його ідентифікатора.
+El estado del último commit se indica con un icono junto al ID del commit.
 
-- **Жовтий колір** - виконується збірка і деплой проєкту.
-- **Зелений колір** - деплой завершився успішно.
-- **Червоний колір** - під час лінтингу, сборки або деплою сталася помилка.
+- **Color amarillo** - el proyecto está compilado e implementado.
+- **Color verde** - La implementación se completó con éxito.
+- **Color rojo** - Se ha producido un error durante la verificación, la
+  compilación o la implementación
 
-Детальнішу інформацію про статус можна подивитися, клікнувши на іконку, і
-у вікні, що випадає, перейти за посиланням `Details`.
+Se puede ver información de estado más detallada haciendo clic en el icono y en
+la ventana desplegable del enlace `Detalles`.
 
 ![Deployment status](./assets/deploy-status.png)
 
-### Жива сторінка
+### Página activa
 
-Через якийсь час, зазвичай кілька хвилин, живу сторінку можна буде подивитися
-за адресою, вказаною у відредагованій властивості `homepage`. Наприклад, ось
-посилання на живу версію для цього репозиторію
+Después de un tiempo, normalmente un par de minutos, la página real se puede ver
+en la dirección especificada en la propiedad `homepage`. Por ejemplo, aquí está
+el enlace a la versión activa de este repositorio
 [https://goitacademy.github.io/react-homework-template](https://goitacademy.github.io/react-homework-template).
 
-Якщо відкривається порожня сторінка, переконайся, що у вкладці `Console` немає помилок
-пов'язаних із неправильними шляхами до CSS і JS файлів проєкту (**404**). Швидше 
-за все у тебе неправильне значення властивості `homepage` у файлі `package.json`.
+Si se abre una página en blanco, asegúrate de que no haya errores en la pestaña
+`Console` relacionados con rutas incorrectas de archivos CSS y JS del proyecto
+(**404**). Probablemente tienes un valor incorrecto para la propiedad `homepage`
+en el archivo `package.json`.
 
-### Маршрутизація
+### Enrutamiento
 
-Якщо додаток використовує бібліотеку `react-router-dom` для маршрутизації,
-необхідно додатково налаштувати компонент `<BrowserRouter>`, передавши у пропе
-`basename` точну назву твого репозиторію. Слеш на початку рядка обов'язковий.
+Si la aplicación utiliza la librería `react-router-dom` para el enrutamiento, el
+componente `<BrowserRouter>` debe ser configurado adicionalmente pasando en la
+prop `basename`, el nombre exacto de tu repositorio. Las barras inclinadas al
+principio y al final de la cadena son obligatorias.
 
 ```jsx
-<BrowserRouter basename="/your_repo_name">
+<BrowserRouter basename="/your_repo_name/">
   <App />
 </BrowserRouter>
 ```
 
-## Як це працює
+## ¿Cómo funciona?
 
 ![How it works](./assets/how-it-works.png)
 
-1. Після кожного пушу в гілку `main` GitHub-репозиторія, запускається спеціальний
-   скрипт (GitHub Action) з файла `.github/workflows/deploy.yml`.
-2. Усі файли репозиторію копіюються на сервер, де проект ініціалізується і
-   проходить лінтинг і збірку перед деплоєм.
-3. Якщо всі кроки пройшли успішно, зібрана продакшн-версія файлів проєкту
-   відправляється в гілку `gh-pages`. В іншому випадку, в лозі виконання
-   скрипта буде вказано в чому проблема.
+1. Después de cada push a la rama `main` del repositorio GitHub, se ejecuta un
+   script especial (GitHub Action) del archivo `.github/workflows/deploy.yml`.
+2. Todos los archivos del repositorio se copian en el servidor, donde el
+   proyecto se inicializa, se verifica y se compila antes de ser implementado.
+3. Si todos los pasos tienen éxito, la versión de producción compilada de los
+   archivos del proyecto se envía a la rama `gh-pages`. De lo contrario, el
+   registro de ejecución del script indicará cuál es el problema.
