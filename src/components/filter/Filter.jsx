@@ -2,15 +2,12 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 export default class Filter extends Component {
-  handleFilterForm = event => {
-    this.props.filterContacts(event.target.value.toLowerCase());
-  };
   render() {
     return (
       <div className="submit-form flex mb-2">
         <label htmlFor="find">Find contacts by Name</label>
         <input
-          onChange={this.handleFilterForm}
+          onChange={this.props.filterContacts}
           type="text"
           name="query"
           placeholder="John Doe..."

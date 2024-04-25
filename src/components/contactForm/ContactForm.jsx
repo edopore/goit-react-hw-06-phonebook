@@ -1,23 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { nanoid } from 'nanoid';
 import './ContactForm.css';
 
 export default class ContactForm extends Component {
-  handleSubmit = event => {
-    // Call the parent callback function
-    event.preventDefault();
-    this.props.addContact({
-      id: nanoid(),
-      name: event.target.name.value,
-      number: event.target.number.value,
-    });
-    event.target.reset();
-  };
   render() {
     return (
       <div>
-        <form className="submit-form" onSubmit={this.handleSubmit}>
+        <form className="submit-form" onSubmit={this.props.addContact}>
           <div className="flex mb-2">
             <label>Name</label>
             <input

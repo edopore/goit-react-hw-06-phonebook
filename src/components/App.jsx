@@ -1,60 +1,50 @@
-import React, { useEffect, useState } from 'react';
 import Contacts from './contacts/Contacts';
 import ContactForm from './contactForm/ContactForm';
 import Filter from './filter/Filter';
 import './App.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact, deleteContact, filterContact } from './redux/contactSlice';
+import { nanoid } from 'nanoid';
 
 export function App() {
-  const [contacts, setContacts] = useState([]);
+  const dispatch = useDispatch();
+  const contactList = useSelector(state => state.contacts.contacts);
 
-  const getContacts = () => {
-    const json = localStorage.getItem('contacts');
-    const items = JSON.parse(json);
-    return items;
-  };
-
-  const addContact = newContact => {
-    const items = getContacts();
-    const result = items.filter(word =>
-      word.name.toLowerCase().includes(newContact.name.toLowerCase())
+  const searchContact = name => {
+    const result = contactList.filter(word =>
+      word.name.toLowerCase().includes(name.toLowerCase())
     );
-    if (result.length > 0) return alert(`${result[0].name} already exists`);
-    items.push(newContact);
-    localStorage.setItem('contacts', JSON.stringify(items));
-    setContacts(getContacts());
+    if (result.length > 0) {
+      return true;
+    }
+    return false;
   };
 
-  const findContact = param => {
-    const items = getContacts();
-    const result = items.filter(word =>
-      word.name.toLowerCase().includes(param)
-    );
-    if (param === '') return setContacts(items);
-    setContacts(result);
-  };
-  const deleteContact = id => {
-    const items = getContacts();
-    const result = items.findIndex(contact => contact.id === id);
-    items.splice(result, 1);
-    localStorage.setItem('contacts', JSON.stringify(items));
-    setContacts(getContacts());
+  const handleAddContact = event => {
+    event.preventDefault();
+    const id = nanoid();
+    const name = event.target.name.value;
+    const number = event.target.number.value;
+    searchContact(name)
+      ? alert(`${name} already exists`)
+      : dispatch(addContact({ id, name, number }));
+    event.target.reset();
   };
 
-  useEffect(() => {
-    if (localStorage.getItem('contacts') === null)
-      localStorage.setItem('contacts', JSON.stringify([]));
-    setContacts(getContacts());
-  }, []);
+  const handleRemoveContact = event => {
+    dispatch(deleteContact(event.target.id));
+  };
 
-  useEffect(() => {}, [contacts]);
-
+  const handleFilter = event => {
+    dispatch(filterContact(event.target.value));
+  };
   return (
     <div className="app">
       <h1>Phonebook</h1>
-      <ContactForm addContact={addContact} />
+      <ContactForm addContact={handleAddContact} />
       <h2>Contacts</h2>
-      <Filter filterContacts={findContact} />
-      <Contacts contactsList={contacts} deleteContact={deleteContact} />
+      <Filter filterContacts={handleFilter} />
+      <Contacts contactsList={contactList} handleDelete={handleRemoveContact} />
     </div>
   );
 }

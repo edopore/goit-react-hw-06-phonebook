@@ -3,9 +3,6 @@ import React, { Component } from 'react';
 import './Contacts.css';
 
 export default class Contacts extends Component {
-  handleDelete = evt => {
-    this.props.deleteContact(evt.target.id);
-  };
   render() {
     return (
       <div>
@@ -16,7 +13,7 @@ export default class Contacts extends Component {
                 <p>
                   {contact.name}: {contact.number}
                 </p>
-                <button onClick={this.handleDelete} id={contact.id}>
+                <button onClick={this.props.handleDelete} id={contact.id}>
                   Delete
                 </button>
               </li>
