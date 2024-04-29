@@ -16,6 +16,7 @@ export const contactSlice = createSlice({
         contact => contact.id === action.payload
       );
       state.contacts.splice(index, 1);
+      state.base.splice(index, 1);
     },
     filterContact: (state, action) => {
       const items = [...state.base];
