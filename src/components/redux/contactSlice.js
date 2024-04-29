@@ -9,14 +9,13 @@ export const contactSlice = createSlice({
   reducers: {
     addContact: (state, action) => {
       state.contacts = [...state.contacts, action.payload];
-      state.base = [...state.base, action.payload];
+      state.base = [...state.contacts];
     },
     deleteContact: (state, action) => {
-      const index = state.contacts.findIndex(
-        contact => contact.id === action.payload
-      );
-      state.contacts.splice(index, 1);
+      const items = [...state.base];
+      const index = items.findIndex(contact => contact.id === action.payload);
       state.base.splice(index, 1);
+      state.contacts = [...state.base];
     },
     filterContact: (state, action) => {
       const items = [...state.base];
