@@ -5,6 +5,7 @@ export const contactSlice = createSlice({
   initialState: {
     contacts: [],
     base: [],
+    filter: '',
   },
   reducers: {
     addContact: (state, action) => {
@@ -16,8 +17,10 @@ export const contactSlice = createSlice({
       const index = items.findIndex(contact => contact.id === action.payload);
       state.base.splice(index, 1);
       state.contacts = [...state.base];
+      state.filter = '';
     },
     filterContact: (state, action) => {
+      state.filter = action.payload;
       const items = [...state.base];
       const result = items.filter(word =>
         word.name.toLowerCase().includes(action.payload)

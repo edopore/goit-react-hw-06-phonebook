@@ -5,11 +5,11 @@ import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact, deleteContact, filterContact } from './redux/contactSlice';
 import { nanoid } from 'nanoid';
-import { persistor } from './redux/store';
 
 export function App() {
   const dispatch = useDispatch();
   const contactList = useSelector(state => state.contacts.contacts);
+  const filterValue = useSelector(state => state.contacts.filter);
   const searchContact = name => {
     const result = contactList.filter(word =>
       word.name.toLowerCase().includes(name.toLowerCase())
@@ -36,7 +36,6 @@ export function App() {
   };
 
   const handleFilter = event => {
-    console.log(persistor.getState().registry);
     dispatch(filterContact(event.target.value));
   };
   return (
@@ -44,7 +43,7 @@ export function App() {
       <h1>Phonebook</h1>
       <ContactForm addContact={handleAddContact} />
       <h2>Contacts</h2>
-      <Filter filterContacts={handleFilter} />
+      <Filter filterContacts={handleFilter} filterValue={filterValue} />
       <Contacts contactsList={contactList} handleDelete={handleRemoveContact} />
     </div>
   );
